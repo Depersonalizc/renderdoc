@@ -1026,6 +1026,7 @@ GLResourceRecord *WrappedOpenGL::GetContextRecord()
 
 void WrappedOpenGL::UseUnusedSupportedFunction(const char *name)
 {
+#if DISABLED(JAMIE_MODS) // MOD: keeps capturing on anyway
   // if this is the first time an unused function is called, remove all frame capturers immediately
   if(m_UnsupportedFunctions.empty())
   {
@@ -1066,6 +1067,7 @@ void WrappedOpenGL::UseUnusedSupportedFunction(const char *name)
 
     RenderDoc::Inst().SetDriverUnsupportedMessage(RDCDriver::OpenGL, unsupportedStatus);
   }
+#endif
 }
 
 void WrappedOpenGL::CheckImplicitThread()
